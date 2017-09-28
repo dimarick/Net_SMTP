@@ -23,11 +23,8 @@
         "mail",
         "email"
     ],
-    "include-path": [
-        "./"
-    ],
     "license": "BSD-2-Clause",
-    "name": "pear/net_smtp",
+    "name": "dimarick/net_smtp",
     "homepage": "http://pear.github.io/Net_SMTP/",
     "support": {
         "issues": "https://github.com/pear/Net_SMTP/issues",
@@ -35,14 +32,10 @@
     },
     "type": "library",
     "require": {
-        "php": ">=5.4.0",
-        "pear/pear-core-minimal": "*",
-        "pear/net_socket": "*"
+        "php": ">=5.6.0",
+        "dimarick/net_socket": "v2.0.0beta1@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
-    },
-    "suggest": {
-        "pear/auth_sasl": "Install optionally via your project's composer.json"
     }
 }
