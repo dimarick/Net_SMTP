@@ -33,7 +33,7 @@
     "type": "library",
     "require": {
         "php": ">=5.6.0",
-        "dimarick/net_socket": "v2.0.0beta1@dev"
+        "dimarick/net_socket": "v2.0.0beta2@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
