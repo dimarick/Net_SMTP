@@ -544,7 +544,7 @@ class Net_SMTP
          * (SSL) socket connection. */
         if ($tls && version_compare(PHP_VERSION, '5.1.0', '>=')
             && extension_loaded('openssl') && isset($this->esmtp['STARTTLS'])
-            && strncasecmp($this->host, 'ssl://', 6) === 0
+            && strncasecmp($this->host, 'ssl://', 6) !== 0
         ) {
             $this->put('STARTTLS');
             $this->parseResponse(220);
