@@ -57,6 +57,11 @@ class Net_SMTP
     public $host = 'localhost';
 
     /**
+     * @var bool
+     */
+    protected $ssl = false;
+
+    /**
      * The port to connect to.
      * @var int
      */
@@ -171,7 +176,12 @@ class Net_SMTP
         $pipelining = false, $timeout = 0, $socket_options = null
     ) {
         if (isset($host)) {
-            $this->host = $host;
+            if (strncasecmp($host, 'ssl://', 6) === 0) {
+                $this->host = mb_substr($host, 6);
+                $this->ssl = true;
+            } else {
+                $this->host = $host;
+            }
         }
         if (isset($port)) {
             $this->port = $port;
@@ -544,7 +554,7 @@ class Net_SMTP
          * (SSL) socket connection. */
         if ($tls && version_compare(PHP_VERSION, '5.1.0', '>=')
             && extension_loaded('openssl') && isset($this->esmtp['STARTTLS'])
-            && strncasecmp($this->host, 'ssl://', 6) === 0
+            && $this->ssl
         ) {
             $this->put('STARTTLS');
             $this->parseResponse(220);
